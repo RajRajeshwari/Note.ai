@@ -62,10 +62,11 @@ Meeting Transcript:
 {text}
 """
     # Replace this with your open-source LLM API endpoint
-    LLM_API_URL = "https://api-inference.huggingface.co/models/gpt4all/gpt4all-j"
+    #Get grok API key from Secrets
+    groq_api_key = st.secrets.get("GROQ_API_KEY")
 
     # Example does not require API key, adjust if yours does
-    response = requests.post(LLM_API_URL, json={"inputs": prompt, "parameters": {"max_new_tokens": 500}})
+    response = requests.post(groq_api_key, json={"inputs": prompt, "parameters": {"max_new_tokens": 500}})
     if response.status_code == 200:
         return response.json()[0]["generated_text"]
     else:
