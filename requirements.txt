@@ -5,3 +5,5 @@ av
 numpy
 torch
 whisper
+requests
+base64
